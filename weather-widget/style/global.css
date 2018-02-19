@@ -1,0 +1,73 @@
+html {
+    background: linear-gradient(#81c2d2, #3b91a6);
+    font-family: "Poppins", sans-serif;
+    font-size: 100%;
+	color: white;
+}
+
+a:link {
+    color:#FF0000; 
+}  
+a:visited {
+    color:#00FF00; 
+} 
+a:hover {
+    color:#FF00FF; 
+} 
+a:active {
+    color:#0000FF; 
+} 
+
+img.resize {
+  max-width:50%;
+  max-height:50%;
+}
+
+#current-date {
+    text-align: right;
+    font-size: 4rem;
+	font-weight: 200;
+    padding-right: 2rem;
+}
+
+#current-conditions {
+    font-size: 4rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+    padding: 7rem;
+}
+
+#location {
+    font-size: 4rem;
+}
+
+#current-temperature {
+	font-size:17rem;
+	font-weight: 100;
+	line-height: 0;
+    text-align: center;
+}
+
+#day-1, #day-2, #day-3, #day-4, #day-5 {
+	font-size: 2rem;
+	font-weight: 300;
+}
+
+#forecast {
+	display: grid;
+	grid-template-columns: 25% 1fr 25% 1fr 25% 1fr 25% 1fr 25% 1fr 25%;
+	font-size: 2em;
+	font-weight: 300;
+	text-align: center;
+	line-height: 1;
+}
+
+#icon1, #icon2, #icon3, #icon4, #icon5 {
+	width: 1%;
+}
+
+
+
+
+

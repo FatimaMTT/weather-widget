@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Weather Widget</title>
+    <meta name="Weather Widget" content="Description">
+    <meta name="Fatima Malo Torres Trueba" content="Author">
+    <link rel="stylesheet" type="text/css" href="style/global.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300" rel="stylesheet">
+    <script 
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+	</script>
+</head>
+
+<body>    
+    <header>
+    <p id="current-date"></p>
+    </header>
+        <div id="current-conditions">
+		<div id="current-icon"></div>
+		<div id="current-temperature"></div>
+        <div><span id="current-high"></span>/<span id="current-low"></span>
+            <img id="location-icon" src="images/location-icon.png" alt="Location Icon">
+            <p id="location">Boston</p>
+        </div>
+    </div>
+    <div>
+	</div>
+	
+	<div id="forecast">
+		<div>
+            <p id="day1"></p>
+            <div id="icon1"></div>
+            <div><span id="max_temp1"></span>/<span id="min_temp1"></span></div>
+		</div>
+		
+		<div>
+            <p id="day2"></p>
+            <div id="icon2"></div>
+            <div><span id="max_temp2"></span>/<span id="min_temp2"></span></div>
+		</div>
+		
+		<div>
+            <p id="day3"></p>
+            <div id="icon3"></div>
+            <div><span id="max_temp3"></span>/<span id="min_temp3"></span></div>
+		</div>
+		
+		<div>
+            <p id="day4"></p>
+            <div id="icon4"></div>
+            <div><span id="max_temp4"></span>/<span id="min_temp4"></span></div>
+		</div>
+		
+		<div>
+            <p id="day5"></p>
+            <div id="icon5"></div>
+            <div><span id="max_temp5"></span>/<span id="min_temp5"></span></div>
+		</div>
+	</div> 
+	
+	<script>
+        d =  new Date();
+        currentYear = d.getFullYear();
+        currentMonth = d.getMonth() + 1;
+        currentDay = d.getDate();
+        document.getElementById("current-date").innerHTML = currentMonth + "/" + currentDay + "/" + currentYear;
+        
+        var weekday = new Array(7);
+        weekday[0] =  "Sunday";
+        weekday[1] = "Monday";
+        weekday[2] = "Tuesday";
+        weekday[3] = "Wednesday";
+        weekday[4] = "Thursday";
+        weekday[5] = "Friday";
+        weekday[6] = "Saturday";
+        
+        
+	$(function() {
+		var url = "http://api.openweathermap.org/data/2.5/forecast?q=Boston&units=imperial&appid=302838c07bb1d3a7d34fdf9d897af984";
+		
+		window['wxCallback'] = function(weatherData) {
+			var currentTemp = weatherData.list[0].main.temp;
+			var currentIcon = "<img src='images/" + weatherData.list[0].weather[0].icon + ".png'>";
+            var currentHigh = weatherData.list[0].main.temp_max;
+            var currentLow = weatherData.list[0].main.temp_min;
+			$('#current-temperature').html(currentTemp);
+			$('#current-icon').html(currentIcon);
+            $('#current-high').html(currentHigh);
+            $('#current-low').html(currentLow);
+            
+            counter = 0; 
+            while (counter < 6) {
+                maxTemp = weatherData.list[counter].main.temp_max;
+                minTemp = weatherData.list[counter].main.temp_min;
+                n = weekday[d.getDay() + 1];
+                icon = "<img src='images/" + weatherData.list[counter].weather[0].icon + ".png'>";
+                $('#max_temp'+ counter).html(maxTemp);
+                $('#min_temp'+ counter).html(minTemp);
+                $('#icon'+ counter).html(icon);
+                $('#day' + counter).html(n);
+                  counter++;
+}
+
+		};
+		
+		$.ajax({
+			url: url,
+			dataType: 'jsonp',
+			cache: true,
+			jsonpCallback: 'wxCallback'
+		});
+	}); 
+</script>    
+    
+</body>
+</html>
