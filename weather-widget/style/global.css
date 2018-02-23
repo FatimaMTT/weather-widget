@@ -16,11 +16,6 @@ a:hover {
 } 
 a:active {
     color:#0000FF; 
-} 
-
-img.resize {
-  max-width:50%;
-  max-height:50%;
 }
 
 #current-date {
@@ -34,12 +29,22 @@ img.resize {
     font-size: 4rem;
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
     padding: 7rem;
+	align-items: center;
+}
+
+#current-icon img {
+	width:50%;
+	height:auto;
 }
 
 #location {
     font-size: 4rem;
+}
+
+#location-icon {
+	width: 9%;
+	height: auto;
 }
 
 #current-temperature {
@@ -56,18 +61,11 @@ img.resize {
 
 #forecast {
 	display: grid;
-	grid-template-columns: 25% 1fr 25% 1fr 25% 1fr 25% 1fr 25% 1fr 25%;
+	grid-template-columns: 20% 20% 20% 20% 20%;
 	font-size: 2em;
-	font-weight: 300;
-	text-align: center;
 	line-height: 1;
 }
 
-#icon1, #icon2, #icon3, #icon4, #icon5 {
-	width: 1%;
+#icon1 img, #icon2 img, #icon3 img, #icon4 img, #icon5 img {
+	width: 30%;
 }
-
-
-
-
-
